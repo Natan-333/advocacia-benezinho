@@ -1,9 +1,19 @@
 package br.com.fiap.domain.entity;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "TB_TIPODEACAO")
 public class TipoDeAcao {
 
+
+    @Id
+    @Column(name = "ID_TipoDeAcao")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_TipoDeAcao")
+    @SequenceGenerator(name = "SQ_TipoDeAcao", sequenceName = "SQ_TipoDeAcao")
     private Long id;
 
+    @Column(name = "NM_TipoDeAcao")
     private String nome;
 
     public TipoDeAcao() {

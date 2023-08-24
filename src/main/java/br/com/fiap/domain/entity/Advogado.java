@@ -1,6 +1,18 @@
 package br.com.fiap.domain.entity;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "TB_AREA", uniqueConstraints ={
+
+        @UniqueConstraint(name = "UK_NM_AREA", columnNames = {"NM_AREA"} )
+} )
 public class Advogado {
+
+    @Id
+    @SequenceGenerator(name = "SQ_AREA", sequenceName = "SQ_AREA", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_DEPOSITO")
+    @Column(name = "ID_DEPOSITO")
 
     private Long id;
 
@@ -12,6 +24,7 @@ public class Advogado {
 
     public Advogado() {
     }
+
 
     public Advogado(Long id, String nome, String numeroOAB, Estado estado) {
         this.id = id;

@@ -1,11 +1,23 @@
 package br.com.fiap.domain.entity;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "TB_AREA", uniqueConstraints = {
+        @UniqueConstraint(name = "UK_NM_ESTADO", columnNames = {"NM_ESTADO"})
+})
 public class Estado {
 
+    @Id
+    @Column(name = "ID_ESTADO")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_ESTADO")
+    @SequenceGenerator(name = "SQ_ESTADO", sequenceName = "SQ_ESTADO")
     private Long id;
 
+    @Column(name = "NM_ESTADO", nullable = false)
     private String nome;
 
+    @Column(name = "SG_ESTADO")
     private String sigla;
 
     public Estado() {
